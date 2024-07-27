@@ -23,7 +23,7 @@ object Application extends ZIOAppDefault:
       options <- ZIO.succeed:
         ZioHttpServerOptions.default.appendInterceptor(CORSInterceptor.default)
       _ <- Server.serve:
-        ZioHttpInterpreter(options).toHttp(endpoints).withDefaultErrorResponse
+        ZioHttpInterpreter(options).toHttp(endpoints) //withDefaultErrorResponse
     yield ()
 
   override def run: Task[Unit] =
